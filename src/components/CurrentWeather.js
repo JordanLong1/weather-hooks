@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-
+// import {DisplayCurrent} from './DisplayCurrent'
 
 export const CurrentWeather = () => {
 
@@ -17,19 +17,36 @@ export const CurrentWeather = () => {
          setInput('')
     }
 
+    const mapCurrentWeatherData = () => {
+      console.log(currentData)
+      return (
+          <div className='weather-details'>
+              <label>{currentData.current.condition.text}</label>
+              <img src={currentData.current.condition.icon} alt=''/>
+            {/* <p>Temperature: {currentData.current.feelslike_f}</p> */}
+          </div>
+      )
+        
+    }
+
     const mapCurrentLocationData = () => {
-        console.log(currentData)
+
     }
 
 
 return (
     <div>
-        <div>
+        <div className='search-div'>
             <form onSubmit={onTermSubmit}>
-            <input type='text' value={input} onChange={(e) => setInput(e.target.value)} placeholder='Search for a location by zip code' />
+                <label htmlFor='input'>Please enter your zip code:</label>
+            <input type='text' value={input} onChange={(e) => setInput(e.target.value)} placeholder='Ex: 12345' />
             </form>
         </div>
-       {mapCurrentLocationData()}
+        {currentData.length !== 0 ? 
+        mapCurrentWeatherData()
+        :
+        <div>Enter a zip code</div>
+    }
     </div>
 )
 
