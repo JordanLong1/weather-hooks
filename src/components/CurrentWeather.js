@@ -21,9 +21,13 @@ export const CurrentWeather = () => {
       console.log(currentData)
       return (
           <div className='weather-details'>
-              <label>{currentData.current.condition.text}</label>
               <img src={currentData.current.condition.icon} alt=''/>
-            {/* <p>Temperature: {currentData.current.feelslike_f}</p> */}
+            <li>{currentData.current.feelslike_f}</li>
+            <li>{currentData.current.condition.text}</li>
+            <li>{currentData.current.last_updated}</li>
+            <li>{currentData.current.pressure_in}</li>
+            <li>{currentData.current.humidity}</li>
+            <li>{currentData.current.wind_mph}</li>
           </div>
       )
         
