@@ -18,9 +18,10 @@ export const CurrentWeather = () => {
     }
 
     const mapCurrentWeatherData = () => {
-      console.log(currentData)
+    //   console.log(currentData)
       return (
           <div className='weather-details'>
+              <h4>{currentData.location.name}, {currentData.location.region}</h4>
               <img src={currentData.current.condition.icon} alt=''/>
             <li>{currentData.current.feelslike_f}</li>
             <li>{currentData.current.condition.text}</li>
@@ -33,11 +34,7 @@ export const CurrentWeather = () => {
         
     }
 
-    const mapCurrentLocationData = () => {
-
-    }
-
-
+  
 return (
     <div>
         <div className='search-div'>
