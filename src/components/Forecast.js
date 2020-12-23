@@ -1,9 +1,13 @@
-import React from 'react' 
+import React, {useState} from 'react' 
 
 
 
-export const Forecast = () => {
+export const Forecast = (props) => {
+
+    console.log(props)
     return (
-        <div> 10 day forecast</div>
+        <div> 
+            {/* {getForecast()} */}
+        </div>
     )
 }
