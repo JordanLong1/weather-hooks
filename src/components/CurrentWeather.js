@@ -1,24 +1,26 @@
-import React, {useEffect, useState} from 'react'
-// import {DisplayCurrent} from './DisplayCurrent'
-
+import React, {useState} from 'react'
+import {Forecast} from './Forecast'
 export const CurrentWeather = () => {
 
     let [currentData, setCurrentData] = useState([]); 
+    const [forecastData, setForecastData] = useState([])
     let [input, setInput] = useState(''); 
     
     const {REACT_APP_WEATHER_KEY} = process.env
 
-  
+    
     const onTermSubmit = async (event) => {
         event.preventDefault()
-           const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${REACT_APP_WEATHER_KEY}&q=${input}`)
-         const data = await response.json()
+        const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${REACT_APP_WEATHER_KEY}&q=${input}`)
+        const data = await response.json()
          setCurrentData(data)
          setInput('')
+
+         getForecastData()
     }
 
     const mapCurrentWeatherData = () => {
-    //   console.log(currentData)
+       
       return (
           <div className='weather-details'>
               <h4>{currentData.location.name}, {currentData.location.region}</h4>
@@ -30,8 +32,16 @@ export const CurrentWeather = () => {
             <li>{currentData.current.humidity}</li>
             <li>{currentData.current.wind_mph}</li>
           </div>
+          
       )
         
+    }
+
+    const getForecastData = async () => {
+        const res = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${REACT_APP_WEATHER_KEY}&q=${input}`)
+        const data = await res.json()
+        console.log(data)
+        setForecastData(data)
     }
 
   
@@ -44,11 +54,11 @@ return (
             </form>
         </div>
         {currentData.length !== 0 ? 
-        mapCurrentWeatherData()
+       mapCurrentWeatherData()
+       
         :
         <div>Enter a zip code</div>
     }
-    </div>
-)
-
+     </div>
+    )   
 }
