@@ -25,12 +25,12 @@ export const CurrentWeather = () => {
           <div className='weather-details'>
               <h4>{currentData.location.name}, {currentData.location.region}</h4>
               <img src={currentData.current.condition.icon} alt=''/>
-            <li>{currentData.current.feelslike_f}</li>
-            <li>{currentData.current.condition.text}</li>
-            <li>{currentData.current.last_updated}</li>
-            <li>{currentData.current.pressure_in}</li>
-            <li>{currentData.current.humidity}</li>
-            <li>{currentData.current.wind_mph}</li>
+            <li>Current Temperature: {currentData.current.feelslike_f}</li>
+            <li>Condition: {currentData.current.condition.text}</li>
+            <li>Last Updated: {currentData.current.last_updated}</li>
+            <li>Pressure: {currentData.current.pressure_in}</li>
+            <li>Humidity: {currentData.current.humidity}</li>
+            <li>Wind MPH: {currentData.current.wind_mph}</li>
           </div>
           
       )
@@ -46,15 +46,16 @@ export const CurrentWeather = () => {
 
   
 return (
-    <div>
+    <div className='current-container'>
         <div className='search-div'>
             <form onSubmit={onTermSubmit}>
                 <label htmlFor='input'>Please enter your zip code:</label>
             <input type='text' value={input} onChange={(e) => setInput(e.target.value)} placeholder='Ex: 12345' />
             </form>
         </div>
-        {currentData.length !== 0 ? 
+        {currentData.length !== 0 && forecastData.length !== 0 ? 
        mapCurrentWeatherData()
+       
        
         :
         <div></div>
