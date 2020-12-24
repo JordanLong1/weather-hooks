@@ -57,8 +57,14 @@ return (
        mapCurrentWeatherData()
        
         :
-        <div>Enter a zip code</div>
-    }
+        <div></div>
+        }
+        {forecastData.length !== 0 ? 
+        <Forecast forecast={forecastData}/>
+        : 
+        <div></div>
+        }
+    
      </div>
     )   
 }
