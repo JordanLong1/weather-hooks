@@ -4,10 +4,13 @@ import React, {useState} from 'react'
 
 export const Forecast = (props) => {
 
-    console.log('made it down', props)
+    const mapForecastPropsToList = (data) => {
+        console.log('hello', data)
+    }
+
     return (
         <div> 
-            {/* {getForecast()} */}
+            {mapForecastPropsToList(props.forecast)}
         </div>
     )
 }
