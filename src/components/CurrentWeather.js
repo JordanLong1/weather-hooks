@@ -40,7 +40,6 @@ export const CurrentWeather = () => {
     const getForecastData = async () => {
         const res = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${REACT_APP_WEATHER_KEY}&q=${input}&days=14`)
         const data = await res.json()
-        console.log(data)
         setForecastData(data)
     }
 
