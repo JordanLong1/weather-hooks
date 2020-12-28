@@ -32,3 +32,8 @@ body {
 .forecast-section-container {
   background-color: green;
 }
+
+.forecast-details {
+  display: flex;
+  flex-direction: row;
+}
