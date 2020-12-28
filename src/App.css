@@ -15,7 +15,7 @@ body {
 
 .search-div {
  /* width: 50%; */
- 
+ border: 1px solid black;
 
 }
 
@@ -27,4 +27,8 @@ body {
 
 .weather-details li {
   list-style: none;
+}
+
+.forecast-section-container {
+  background-color: green;
 }
