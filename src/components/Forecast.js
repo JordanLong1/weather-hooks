@@ -1,5 +1,5 @@
 import React from 'react' 
-
+import PropTypes from 'prop-types';
 
 
 export const Forecast = (props) => {
@@ -20,9 +20,14 @@ export const Forecast = (props) => {
     }
 
     return (
-        <div className='forecast-section-container'> 
+        <div className='weather-details'> 
         <h2 className='forecast-header'>3 Day Forecast for {props.cityName}</h2>
             {mapForecastPropsToList(props.forecast)}
         </div>
     )
+}
+
+Forecast.propTypes = {
+forecast: PropTypes.object, 
+cityName: PropTypes.string
 }
