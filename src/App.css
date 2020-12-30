@@ -33,7 +33,7 @@ body {
   background-color: green;
 }
 
-.forecast-details {
+.forecast-details-section {
   display: flex;
   flex-direction: row;
 }
