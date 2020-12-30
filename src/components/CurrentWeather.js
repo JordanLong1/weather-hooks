@@ -20,9 +20,9 @@ export const CurrentWeather = () => {
     }
 
     const mapCurrentWeatherData = () => {
-       
+    if (currentData.current.condition.text === 'Partly Cloudy' || 'Clear') {
       return (
-          <div className='weather-details'>
+          <div className='weather-details' style={{backgroundColor: '#00bfff'}}>
               <h4>{currentData.location.name}, {currentData.location.region}</h4>
               <img src={currentData.current.condition.icon} alt=''/>
             <li>Current Temperature: {currentData.current.feelslike_f}</li>
@@ -32,8 +32,24 @@ export const CurrentWeather = () => {
             <li>Humidity: {currentData.current.humidity}</li>
             <li>Wind MPH: {currentData.current.wind_mph}</li>
           </div>
-          
       )
+
+    } else {
+        return (
+            <div className='weather-details' style={{backgroundColor: '#747880'}}>
+            <h4>{currentData.location.name}, {currentData.location.region}</h4>
+            <img src={currentData.current.condition.icon} alt=''/>
+          <li>Current Temperature: {currentData.current.feelslike_f}</li>
+          <li>Condition: {currentData.current.condition.text}</li>
+          <li>Last Updated: {currentData.current.last_updated}</li>
+          <li>Pressure: {currentData.current.pressure_in}</li>
+          <li>Humidity: {currentData.current.humidity}</li>
+          <li>Wind MPH: {currentData.current.wind_mph}</li>
+        </div>
+        )
+    }
+          
+      
         
     }
 
@@ -47,8 +63,9 @@ export const CurrentWeather = () => {
 return (
     <div className='current-container'>
         <div className='search-div'>
+            <h1>Welcome to OnDemandWeather</h1>
             <form onSubmit={onTermSubmit}>
-                <label htmlFor='input'>Please enter your zip code:</label>
+                <label htmlFor='input'>Please enter your zip code for the current weather in your area</label>
             <input type='text' value={input} onChange={(e) => setInput(e.target.value)} placeholder='Ex: 12345' />
             </form>
         </div>
@@ -60,11 +77,11 @@ return (
         <div></div>
         }
         {forecastData.length !== 0 ? 
-        <Forecast forecast={forecastData}/>
+        <Forecast forecast={forecastData} cityName={currentData.location.name}/>
         : 
         <div></div>
         }
-    
+
      </div>
     )   
 }
