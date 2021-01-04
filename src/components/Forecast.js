@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types';
 
 
-export const Forecast = (props) => {
+export const Forecast = ({cityName, forecast}) => {
 
     const mapForecastPropsToList = (data) => {
         return data.forecast.forecastday.map(day => {
@@ -21,13 +21,13 @@ export const Forecast = (props) => {
 
     return (
         <div className='weather-details'> 
-        <h2 className='forecast-header'>3 Day Forecast for {props.cityName}</h2>
-            {mapForecastPropsToList(props.forecast)}
+        <h2 className='forecast-header'>3 Day Forecast for {cityName}</h2>
+            {mapForecastPropsToList(forecast)}
         </div>
     )
 }
 
 Forecast.propTypes = {
-forecast: PropTypes.object, 
-cityName: PropTypes.string
+forecast: PropTypes.object.isRequired,
+cityName: PropTypes.string.isRequired
 }
