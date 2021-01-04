@@ -10,9 +10,9 @@ export const Forecast = ({cityName, forecast}) => {
                 <div className='forecast-details-section' key={day.date}>
                     <div className='forecast-details'>
                     <img src={day.day.condition.icon} alt='' />
+                    <h2>{day.date}</h2>
                     <h4>{day.day.condition.text}</h4>
                     <li>High: {day.day.maxtemp_f}, Low: {day.day.mintemp_f}</li>
-
                     </div>
                 </div>
             )
